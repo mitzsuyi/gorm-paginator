@@ -59,7 +59,7 @@ func Pagging(p *Param, dataSource interface{}) (*Paginator, error) {
 		offset = (p.Page - 1) * p.Limit
 	}
 
-	err := db.Limit(p.Limit).Offset(offset).Find(dataSource).Err
+	err := db.Limit(p.Limit).Offset(offset).Find(dataSource).Error
 	<-done
 
 	paginator.TotalRecord = count
